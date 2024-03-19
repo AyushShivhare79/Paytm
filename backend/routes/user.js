@@ -39,7 +39,7 @@ router.post("/signup", async (req, res) => {
     password: req.body.password,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-  });
+  }); 
 
   const userId = user._id;
 
@@ -76,14 +76,14 @@ router.post("/signin", async (req, res) => {
   }
 
   const userExist = await User.findOne({
-    username: req.body.username, //Here
+    username: req.body.username,
     password: req.body.password,
   });
 
   if (userExist) {
     const token = jwt.sign(
       {
-        userId: userExist._id, //Here
+        userId: userExist._id,
       },
       JWT_SECRET
     );
